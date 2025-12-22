@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kou Sai's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* 画像拡大用のモーダルスタイル */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: zoom-out;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #modal-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .clickable-img {
+            cursor: zoom-in;
+            transition: opacity 0.3s;
+        }
+
+        .clickable-img:hover {
+            opacity: 0.8;
+        }
+
+        .link{
+            text-decoration: underline;
+            color: blue !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ナビゲーションバー -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 text-xl font-bold text-indigo-600">
+                    Kou Sai's Portfolio
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#intro" class="hover:text-indigo-600 transition text-sm font-medium">自己紹介</a>
+                    <a href="#career" class="hover:text-indigo-600 transition text-sm font-medium">経歴</a>
+                    <a href="#skills" class="hover:text-indigo-600 transition text-sm font-medium">技術</a>
+                    <a href="#certi" class="hover:text-indigo-600 transition text-sm font-medium">資格</a>
+                    <a href="#works" class="hover:text-indigo-600 transition text-sm font-medium">作成物</a>
+                </div>
+                <div class="md:hidden text-xs font-bold text-gray-400 uppercase">Menu</div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <!-- ヒーローセクション -->
+        <section id="welcome" class="mb-16">
+            <div class="relative overflow-hidden bg-indigo-600 rounded-3xl shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-blue-700 opacity-95"></div>
+                <div class="relative px-6 py-12 md:py-24 text-center">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
+                        Welcome to My Portfolio
+                    </h1>
+                    <p class="text-indigo-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        数学的思考とエンジニアリングを武器に、<br class="hidden md:inline">
+                        価値あるAIソリューションを社会に届けます。
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 1. 自己紹介 -->
+        <section id="intro" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 flex items-center">
+                <span class="w-2 h-10 bg-indigo-600 rounded-full mr-4"></span>
+                自己紹介
+            </h2>
+            <div class="card border-t-4 border-indigo-600">
+                <p class="text-lg leading-loose">
+                    はじめまして、蔡皓と申します。わたしのポートフォリオをご覧いただきありがとうございます。<br>
+                    わたしは2000年生まれの香港出身で、高校からプログラミングを勉強し、大学では数学を専攻しました。 <br>
+                    大学卒業後に日本へ留学し、現在はAvintonジャパンに入社して、プロジェクトに参画しています。<br>
+                    このページでは、わたしのこれまでの経歴と作成物について紹介します。 <br>
+                    これらを通じて、わたしに興味を持っていただければ幸いです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. 経歴紹介 -->
+        <section id="career" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 flex items-center">
+                <span class="w-2 h-10 bg-indigo-600 rounded-full mr-4"></span>
+                経歴紹介
+            </h2>
+            <div class="grid grid-cols-1 gap-6">
+                <div class="card"><h3 class="font-bold mb-2">高校：Pascalとプログラミング基礎</h3><p class="text-sm text-slate-600">
+                    副専攻でICTを選び、そこがプログラミングの起点でした。<br>
+                    当時はPascalを使用し、プログラミングの基礎やアルゴリズムを学びました。<br>
+                    卒業研究ではミリオネアのゲームとそのレポートを作成しました。
+                </p></div>
+                <div class="card"><h3 class="font-bold mb-2">大学：数学・MATLAB・C++</h3><p class="text-sm text-slate-600">
+                    主に数学の理論や証明について勉強していました。 <br>
+                    必須科目でMATLABの授業を受け、期末テストでチェスゲームを作成しました。 <br>
+                    また、応用数学を専攻し、C++の授業も受けていました。
+                </p></div>
+                <div class="card"><h3 class="font-bold mb-2">日本電子：AIシステム科</h3><p class="text-sm text-slate-600">
+                    大学を卒業し、日本で就職しようと考え、 日本電子専門学校のAIシステム科に留学しました。<br>
+                    機械学習やデータマイニング、Azureなどを中心に勉強し、 様々な課題で学んだ知識を実践しました。 <br>
+                    また、資格の勉強に力を入れ、卒業するまでに8つの資格を取得しました。 <br>
+                    卒業研究ではオリジナルのチェスゲームを作成し、 対戦相手のAIをルールベースで構築しました。
+                </p></div>
+                <div class="card"><h3 class="font-bold mb-2">Avinton：アノテーション</h3><p class="text-sm text-slate-600">
+                    25新卒としてAvintonジャパンに就職し、 アノテーションのプロジェクトに参画することになりました。<br>
+                    自動運転の学習用データのアノテーション業務を担当し、 様々な道路状況に対応するアノテーションを行います。 <br>
+                    また、チームメンバーとして、コミュニケーションスキルも学んでいます。
+                </p></div>
+            </div>
+        </section>
+        
+        <!-- 3. 技術 -->
+        <section id="skills" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 flex items-center">
+                <span class="w-2 h-10 bg-indigo-600 rounded-full mr-4"></span>
+                使える技術
+            </h2>
+            <div class="card">
+                    <p class="text-lg leading-loose">
+                    <b>・Python（Flask、streamlit、tensorflow、Pytorch、Langchain、他）</b><br>
+                    <b>・Java</b><br>
+                    <b>・JavaScript</b><br>
+                    <b>・HTML/CSS</b><br>
+                    <b>・SQL（Oracle SQL）</b><br>
+                    <b>・Azure（Azure OpenAI Service、Azure Machinig Learning）</b><br>	
+                    <b>・Linux（Ubuntu）</b><br>
+                    ・MATLAB<br>
+                    ・Pascal<br>
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. 所持資格 -->
+        <section id="certi" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 flex items-center">
+                <span class="w-2 h-10 bg-indigo-600 rounded-full mr-4"></span>
+                所持資格（取得順）
+            </h2>
+            <div class="card border-t-4 border-indigo-600">
+                <p class="text-lg leading-loose">
+                    ・日本語能力試験N1<br>
+                    ・ORACLE MASTER Silver SQL 2019<br>
+                    <b>・Oracle Certified Java Programmer, Gold SE 11</b><br>
+                    ・Python3エンジニア認定基礎試験<br>
+                    ・Python3エンジニア認定データ分析試験<br>
+                    <b>・基本情報技術者試験</b><br>
+                    <b>・LPIC-1</b><br>
+                    ・AI検定<br>
+                    <b>・統計検定2級<br>             																																				
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. 作成物：拡大機能付き -->
+        <section id="works" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 flex items-center">
+                <span class="w-2 h-10 bg-indigo-600 rounded-full mr-4"></span>
+                作成物紹介
+            </h2>
+            <div class="space-y-10">
+                <div class="card overflow-hidden !p-0 flex flex-col md:flex-row">
+                    <div class="p-8 md:w-3/5">
+                        <h3 class="text-2xl font-bold mb-4">文章校正・要約ツール</h3>
+                        <p class="text-slate-600 mb-6">
+                            プロジェクトに参画しながら、自己学習として作成したWebアプリです。 <br>
+                            プログラムがプロンプトを生成するため、ユーザーは文章を入力してオプションを選択するだけで、Geminiから期待通りの回答を得られます。<br>
+                            直接Geminiを利用するよりルール設定などの手間が省けるため、利便性が高まっています。<br>
+                            <br>
+                            <a href="https://docs.google.com/document/d/1YpGZAn1kC3ZBJCBYdI3v_9CniUehDdyD0eqbQzTrlu4/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="link">
+                                ドキュメントはこちら
+                            </a>
+                        </p>
+                    </div>
+                    <div class="md:w-2/5 bg-slate-50 flex items-center justify-center p-6 border-t md:border-t-0 md:border-l border-slate-100">
+                        <img src="校正ツール.png" alt="文章校正ツール" class="clickable-img rounded-xl shadow-lg w-full object-cover" onclick="openModal(this)">
+                    </div>
+                </div>
+
+                <div class="card overflow-hidden !p-0 flex flex-col md:flex-row">
+                    <div class="p-8 md:w-3/5">
+                        <h3 class="text-2xl font-bold mb-4">卒研：ボードゲーム</h3>
+                        <p class="text-slate-600 mb-6">
+                            専門学校の卒業研究として作成したWebゲームです。 <br>
+                            チェスゲームにカードゲームの要素を組み合わせ、 独自のルールを取り入れました。 <br>
+                            対戦相手のAIは、自分のコーディングスキルに挑戦したいという思いから、強化学習を参考にしつつルールベースで作成しました。 <br>                           <br>
+                            <a href="https://docs.google.com/document/d/1eeBq4ttyTkEUBPOB4k7QXp3PNeIlWNOyWBfKScvun70/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="link">
+                                ドキュメントはこちら
+                            </a>
+                        </p>
+                    </div>
+                    <div class="md:w-2/5 bg-slate-50 flex items-center justify-center p-6 border-t md:border-t-0 md:border-l border-slate-100">
+                        <img src="卒研.png" alt="ボードゲーム" class="clickable-img rounded-xl shadow-lg w-full object-cover" onclick="openModal(this)">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- 拡大モーダル -->
+    <div id="modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="拡大画像">
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
+        <p class="text-white font-bold mb-2">Kou Sai Portfolio</p>
+        <p class="text-xs">&copy; 2025 Kou Sai. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(imgElement) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'flex';
+            modalImg.src = imgElement.src;
+            // 拡大時のアニメーション用
+            setTimeout(() => {
+                modalImg.style.transform = 'scale(1)';
+            }, 10);
+            modalImg.style.transform = 'scale(0.9)';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Escキーで閉じる
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+</html>
